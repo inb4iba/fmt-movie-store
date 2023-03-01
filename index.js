@@ -13,7 +13,7 @@ function registerMovie() {
   alert("Filme adicionado com sucesso!");
 
   clearForm();
-  console.log(movies);
+  listMovies();
 }
 
 function getMovieFromForm() {
@@ -32,4 +32,23 @@ function clearForm() {
 
 function isMovieRegistered(title) {
   return movies.find((movie) => movie.title === title);
+}
+
+function listMovies() {
+  document.getElementById("movies-container").innerHTML = movies
+    .map(
+      (movie) => `
+        <div class="card">
+            <div class="image-wrapper">
+                <img src="movie.png">
+            </div>
+            <div class="movie-details">
+                <p>${movie.title}</p>
+                <p class="score">Nota: <span>${movie.score}</span></p>
+                <p class="duration">Duração: <span>${movie.duration}</span></p>
+            </div>
+        </div>
+    `
+    )
+    .join("");
 }
