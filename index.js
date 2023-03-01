@@ -1,8 +1,12 @@
+const movies = [];
+
 document
   .querySelector("#movie-register form")
   .addEventListener("submit", (e) => e.preventDefault());
 
-const movies = [];
+document.getElementById("search-input").addEventListener("input", (e) => {
+  filterMovies(e.target.value);
+});
 
 function registerMovie() {
   const movie = getMovieFromForm();
@@ -13,7 +17,7 @@ function registerMovie() {
   alert("Filme adicionado com sucesso!");
 
   clearForm();
-  listMovies();
+  listMovies(movies);
 }
 
 function getMovieFromForm() {
@@ -34,13 +38,13 @@ function isMovieRegistered(title) {
   return movies.find((movie) => movie.title === title);
 }
 
-function listMovies() {
+function listMovies(movies) {
   document.getElementById("movies-container").innerHTML = movies
     .map(
       (movie) => `
         <div class="card">
             <div class="image-wrapper">
-                <img src="movie.png">
+                <img src="https://via.placeholder.com/200x120">
             </div>
             <div class="movie-details">
                 <p>${movie.title}</p>
@@ -51,4 +55,15 @@ function listMovies() {
     `
     )
     .join("");
+}
+
+function filterMovies(filter) {
+  const filteredMovies = movies.filter((movie) =>
+    filter ? movie.title.toLowerCase().includes(filter.toLowerCase()) : true
+  );
+
+  if (!filteredMovies.length)
+    alert("Não foi encontrado nenhum filme com esse titulo.");
+
+  listMovies(filteredMovies.length ? filteredMovies : movies);
 }
