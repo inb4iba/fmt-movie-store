@@ -77,22 +77,21 @@ svg {
   position: absolute;
   inset: 0;
   display: flex;
-  justify-content: space-between;
+  gap: 0.25rem;
   transition: all 250ms;
   z-index: 2;
-  padding: 0.5rem;
+  padding: 0.5rem 0.75rem;
 }
 
 .movie-icons::before {
   position: absolute;
   content: "";
   inset: 0;
-  background: linear-gradient(#000, transparent);
+  background: linear-gradient(#000, transparent 50%);
   z-index: -1;
 }
 
 .movie-icons svg {
-  fill: var(--clr-dark-100);
   stroke: var(--clr-light-900);
 }
 
@@ -101,10 +100,7 @@ svg {
 }
 
 .card:hover .movie-icons {
-  background: #0009;
-  justify-content: center;
-  align-items: center;
-  gap: 1rem;
+  background: #0005;
 }
 
 svg.colored-heart {

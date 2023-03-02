@@ -127,11 +127,11 @@ viewBox="0 0 256 256"
 ></path>
 </svg>`;
 
-export {
-  heartSVG,
-  coloredHeartSVG,
-  closedEyeSVG,
-  openEyeSVG,
-  starSVG,
-  coloredStarSVG,
+export const icons = {
+  favorite: coloredHeartSVG,
+  not_favorite: heartSVG,
+  watched: openEyeSVG,
+  not_watched: closedEyeSVG,
+  score: coloredStarSVG,
+  not_score: starSVG,
 };
