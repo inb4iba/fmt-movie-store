@@ -1,0 +1,32 @@
+:root {
+  --clr-dark-100: #131316;
+  --clr-dark-300: #232326;
+  --clr-light-700: #949494;
+  --clr-light-900: #e3e3e6;
+  --clr-heart: #ff4e4e;
+  --clr-star: #ffcc00;
+}
+
+body {
+  background-color: var(--clr-dark-300);
+  color: var(--clr-light-900);
+  font-family: sans-serif;
+}
+
+#movies-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding-inline: 1rem;
+  margin-block: 2rem;
+}
+
+@media only screen and (min-width: 768px) {
+  #movies-container {
+    max-width: 72rem;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 1rem;
+    margin-inline: auto;
+  }
+}
