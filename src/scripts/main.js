@@ -1,6 +1,9 @@
 import { DomController } from "../controllers/domController.js";
 import { MoviesController } from "../controllers/moviesController.js";
 
+const moviesController = new MoviesController();
+const domController = new DomController();
+
 document
   .querySelector("#movie-register form")
   .addEventListener("submit", (event) => {
@@ -8,11 +11,8 @@ document
   });
 
 document.getElementById("search-input").addEventListener("input", (e) => {
-  filterMovies(e.target.value);
+  moviesController.filterMovies(e.target.value);
 });
-
-const moviesController = new MoviesController();
-const domController = new DomController();
 
 window.registerMovie = () => {
   const movie = domController.getMovieFromForm();
@@ -20,10 +20,10 @@ window.registerMovie = () => {
     return alert("Já possui um filme com esse mesmo título.");
 
   moviesController.addMovie(movie);
+  domController.addCard(movie);
   alert("Filme adicionado com sucesso!");
 
   domController.clearForm();
-  domController.listMovies(moviesController.movies);
 };
 
 window.updateMovie = (title, key) => {

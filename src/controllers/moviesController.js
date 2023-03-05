@@ -1,3 +1,7 @@
+import { DomController } from "./domController.js";
+
+const domController = new DomController();
+
 export class MoviesController {
   #movies;
 
@@ -40,6 +44,8 @@ export class MoviesController {
     if (!filteredMovies.length)
       alert("Não foi encontrado nenhum filme com esse titulo.");
 
-    listMovies(filteredMovies.length ? filteredMovies : movies);
+    domController.listMovies(
+      filteredMovies.length ? filteredMovies : this.#movies
+    );
   }
 }

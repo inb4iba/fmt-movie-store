@@ -1,3 +1,14 @@
+#add-movie-btn {
+  border: 2px solid var(--clr-light-700);
+  background-color: var(--clr-dark-100);
+  min-height: 5rem;
+}
+
+#add-movie-btn i {
+  color: var(--clr-light-700);
+  font-size: 2rem;
+}
+
 .card {
   position: relative;
   border-radius: 0.5rem;
@@ -8,7 +19,7 @@
   position: relative;
   border-radius: 0.5rem 0.5rem 0 0;
   width: 100%;
-  aspect-ratio: 3/3;
+  aspect-ratio: 1/1;
   overflow: hidden;
 }
 
@@ -28,6 +39,11 @@
 
 .movie-title {
   font-size: 1.5rem;
+  width: 100%;
+  overflow: hidden;
+  display: inline-block;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .movie-details {
@@ -38,9 +54,8 @@
   color: var(--clr-light-700);
 }
 
-svg {
-  width: 1.5rem;
-  height: 1.5rem;
+i {
+  font-size: 1.5rem;
 }
 
 .movie-icons {
@@ -58,16 +73,17 @@ svg {
   position: absolute;
   content: "";
   inset: 0;
-  background: linear-gradient(#000, transparent 50%);
+  bottom: 50%;
+  background: linear-gradient(#16182380 2.92%, #16182300 98.99%);
   z-index: -1;
 }
 
-.movie-icons svg {
+.movie-icons i {
   fill: none;
-  stroke: var(--clr-light-900);
+  color: white;
 }
 
-.score svg {
+.score i {
   fill: var(--clr-dark-300);
 }
 
@@ -75,14 +91,13 @@ svg {
   background: #0005;
 }
 
-svg.colored-heart {
-  stroke: none;
-  fill: var(--clr-heart);
+i.colored-heart {
+  color: var(--clr-heart);
 }
 
-svg.colored-star {
+i.colored-star {
   stroke: none;
-  fill: var(--clr-star);
+  color: var(--clr-star);
 }
 
 .icon-btn {

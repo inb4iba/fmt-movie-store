@@ -1,6 +1,7 @@
 import { Movie } from "../models/Movie.js";
 import { icons } from "../utils/icons.js";
 import { calculatedTime } from "../scripts/calc.js";
+import { getPoster } from "../scripts/posters.js";
 
 export class DomController {
   clearForm() {
@@ -17,39 +18,18 @@ export class DomController {
     return new Movie(title, score, duration);
   }
 
-  listMovies(movies) {
-    document.getElementById("movies-container").innerHTML = movies
-      .map(
-        (movie) => `
-          <div class="card" id="${movie.title
-            .toLowerCase()
-            .replaceAll(" ", "-")}">
-          <div class="image-wrapper">
-            <img
-              src="https://cdn.shopify.com/s/files/1/0057/3728/3618/products/everything-everywhere-all-at-once_mpmkbaml_500x749.jpg?v=1649865955"
-            />
-            <div class="movie-icons">
-              <button id="watched-btn" class="icon-btn" onclick="updateMovie('${movie.title.toLowerCase()}', 'watched')">
-                ${movie.watched ? icons.watched : icons.not_watched}
-              </button>
-              <button id="favorite-btn" class="icon-btn" onclick="updateMovie('${movie.title.toLowerCase()}', 'favorite')">
-                ${movie.favorite ? icons.favorite : icons.not_favorite}
-              </button>
-            </div>
-          </div>
-          <div class="movie-info">
-            <h4 class="movie-title">${movie.title}</h4>
-            <div class="movie-details">
-              <span class="duration">Duração: ${movie.duration}</span>
-              <div class="score">
-                ${this.getScore(movie.score)}
-              </div>
-            </div>
-          </div>
-        </div>
-        `
-      )
-      .join("");
+  async listMovies(movies) {
+    const container = document.getElementById("movies-container");
+    container.innerHTML = `<button id="add-movie-btn" class="card"><i class="ph-plus"></i></button>`;
+    const cards = await Promise.all(
+      movies.map(async (movie) => await this.#createCard(movie))
+    );
+    container.innerHTML += cards.join("");
+  }
+
+  async addCard(movie) {
+    const container = document.getElementById("movies-container");
+    container.innerHTML += await this.#createCard(movie);
   }
 
   updateIconElement(id, key, isKeyActive) {
@@ -85,5 +65,34 @@ export class DomController {
     }
 
     return scoreHTML;
+  }
+
+  async #createCard(movie) {
+    return `
+    <div class="card" id="${movie.title.toLowerCase().replaceAll(" ", "-")}">
+    <div class="image-wrapper">
+      <img
+        src="${await getPoster(movie.title)}"
+      />
+      <div class="movie-icons">
+        <button id="watched-btn" class="icon-btn" onclick="updateMovie('${movie.title.toLowerCase()}', 'watched')">
+          ${movie.watched ? icons.watched : icons.not_watched}
+        </button>
+        <button id="favorite-btn" class="icon-btn" onclick="updateMovie('${movie.title.toLowerCase()}', 'favorite')">
+          ${movie.favorite ? icons.favorite : icons.not_favorite}
+        </button>
+      </div>
+    </div>
+    <div class="movie-info">
+      <div class="movie-title">${movie.title}</div>
+      <div class="movie-details">
+        <span class="duration">Duração: ${movie.duration}</span>
+        <div class="score">
+          ${this.getScore(movie.score)}
+        </div>
+      </div>
+    </div>
+  </div>
+  `;
   }
 }
