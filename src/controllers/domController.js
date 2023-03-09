@@ -35,7 +35,7 @@ export class DomController {
   updateIconElement(id, key, isKeyActive) {
     document
       .getElementById(id.replaceAll(" ", "-"))
-      .querySelector(`#${key}-btn`).innerHTML =
+      .querySelector(`.${key}-btn`).innerHTML =
       icons[isKeyActive ? key : `not_${key}`];
   }
 
@@ -75,10 +75,10 @@ export class DomController {
         src="${await getPoster(movie.title)}"
       />
       <div class="movie-icons">
-        <button id="watched-btn" class="icon-btn" onclick="updateMovie('${movie.title.toLowerCase()}', 'watched')">
+        <button class="icon-btn watched-btn" onclick="updateMovie('${movie.title.toLowerCase()}', 'watched')">
           ${movie.watched ? icons.watched : icons.not_watched}
         </button>
-        <button id="favorite-btn" class="icon-btn" onclick="updateMovie('${movie.title.toLowerCase()}', 'favorite')">
+        <button class="icon-btn favorite-btn" onclick="updateMovie('${movie.title.toLowerCase()}', 'favorite')">
           ${movie.favorite ? icons.favorite : icons.not_favorite}
         </button>
       </div>
