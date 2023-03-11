@@ -21,9 +21,55 @@ body {
   margin-block: 2rem;
 }
 
+#search-input {
+  display: flex;
+  padding: 1rem 2rem;
+  background-color: var(--clr-dark-100);
+  color: var(--clr-light-900);
+  font-size: 1.5rem;
+  border: none;
+  border-radius: 0.25rem;
+  width: 90%;
+  margin: auto;
+}
+
+#user-section {
+  position: fixed;
+  background-color: var(--clr-star);
+  color: var(--clr-dark-100);
+  padding: 0.5rem 1rem;
+  margin-bottom: 1rem;
+  top: 0;
+  width: 100%;
+}
+
+main {
+  margin-top: 3rem;
+}
+
+#add-movie-btn {
+  cursor: pointer;
+  filter: brightness(1);
+  transition: all 200ms;
+}
+
+#add-movie-btn:hover {
+  filter: brightness(1.4);
+}
+
 @media only screen and (min-width: 768px) {
-  #movies-container {
+  .container {
+    display: flex;
+    justify-content: center;
     max-width: 72rem;
+    margin: auto;
+  }
+
+  #search-input {
+    width: 100%;
+  }
+
+  #movies-container {
     display: grid;
     grid-template-columns: repeat(5, 1fr);
     gap: 1rem;

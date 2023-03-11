@@ -53,17 +53,20 @@
       </div>
     </div>
 
-    <input
-      type="text"
-      name="search-input"
-      id="search-input"
-      placeholder="Buscar"
-    />
-
-    <p id="time-watched">Você assistiu <span>0 minutos</span></p>
+    <header id="user-section">
+      <p id="time-watched">Você assistiu <span>0 minutos</span></p>
+    </header>
 
     <main>
-      <div id="movies-container">
+      <div class="container">
+        <input
+          type="search"
+          name="search-input"
+          id="search-input"
+          placeholder="Buscar"
+        />
+      </div>
+      <div id="movies-container" class="container">
         <button onclick="addMovieClicked()" id="add-movie-btn" class="card">
           <i class="ph-plus"></i>
         </button>
