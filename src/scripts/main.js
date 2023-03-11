@@ -33,9 +33,8 @@ window.registerMovie = () => {
 
   moviesController.addMovie(movie);
   domController.addCard(movie);
+  modalController.closeModal();
   alert("Filme adicionado com sucesso!");
-
-  domController.clearForm();
 };
 
 window.updateMovie = (title, key) => {

@@ -1,3 +1,5 @@
+import { DomController } from "./domController.js";
+
 export class ModalController {
   modal;
   constructor() {
@@ -14,5 +16,6 @@ export class ModalController {
 
   closeModal() {
     this.modal.style.display = "none";
+    new DomController().clearForm();
   }
 }

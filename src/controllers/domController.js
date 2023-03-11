@@ -3,7 +3,6 @@ import { icons } from "../utils/icons.js";
 import { calculatedTime } from "../scripts/calc.js";
 import { getPoster } from "../scripts/posters.js";
 import { createInteractiveScore } from "../scripts/score.js";
-import { ModalController } from "./modalController.js";
 
 export class DomController {
   clearForm() {
@@ -11,7 +10,6 @@ export class DomController {
     document.getElementById("movie-score-input").value = "";
     document.getElementById("movie-duration-input").value = "";
     createInteractiveScore();
-    new ModalController().closeModal();
   }
 
   getMovieFromForm() {
@@ -24,7 +22,7 @@ export class DomController {
 
   async listMovies(movies) {
     const container = document.getElementById("movies-container");
-    container.innerHTML = `<button id="add-movie-btn" class="card"><i class="ph-plus"></i></button>`;
+    container.innerHTML = `<button onclick="addMovieClicked()" id="add-movie-btn" class="card"><i class="ph-plus"></i></button>`;
     const cards = await Promise.all(
       movies.map(async (movie) => await this.#createCard(movie))
     );
