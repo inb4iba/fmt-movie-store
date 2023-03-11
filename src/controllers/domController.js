@@ -2,12 +2,16 @@ import { Movie } from "../models/Movie.js";
 import { icons } from "../utils/icons.js";
 import { calculatedTime } from "../scripts/calc.js";
 import { getPoster } from "../scripts/posters.js";
+import { createInteractiveScore } from "../scripts/score.js";
+import { ModalController } from "./modalController.js";
 
 export class DomController {
   clearForm() {
     document.getElementById("movie-title-input").value = "";
     document.getElementById("movie-score-input").value = "";
     document.getElementById("movie-duration-input").value = "";
+    createInteractiveScore();
+    new ModalController().closeModal();
   }
 
   getMovieFromForm() {

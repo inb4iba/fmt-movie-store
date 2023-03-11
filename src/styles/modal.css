@@ -1,0 +1,34 @@
+#modal {
+  position: fixed;
+  inset: 0;
+  background-color: #000c;
+  z-index: 5;
+  display: none;
+  place-items: center;
+}
+
+#modal-wrapper {
+  display: flex;
+  background-color: var(--clr-dark-300);
+  color: white;
+  padding: 1.5rem;
+  width: 40%;
+  max-height: 60vh;
+  border-radius: 0.25rem;
+}
+
+#modal-wrapper form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  width: 100%;
+}
+
+#modal-wrapper label {
+  margin-bottom: 0.25rem;
+}
+
+#modal-wrapper form > div {
+  display: flex;
+  flex-direction: column;
+}

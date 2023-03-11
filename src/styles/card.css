@@ -84,7 +84,7 @@ i {
 }
 
 .score i {
-  fill: var(--clr-dark-300);
+  color: var(--clr-light-700);
 }
 
 .card:hover .movie-icons {
