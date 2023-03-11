@@ -26,4 +26,5 @@ Another way to see the project is accessing it's [page](https://inb4iba.github.i
 ## Resources
 
 TMDB API: https://developers.themoviedb.org/3/getting-started
+
 Cards inspiration: https://dribbble.com/shots/20292416-The-Trailers-Concept-Site-Part-1
